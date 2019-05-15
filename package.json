@@ -1,7 +1,7 @@
 {
   "name": "@wsdot/arcgis-rest-gp",
   "version": "0.0.1",
-  "description": "",
+  "description": "For use with [ArcGIS REST JS].",
   "main": "dist/index.js",
   "files": [
     "dist/**"
@@ -28,5 +28,16 @@
   "dependencies": {
     "@esri/arcgis-rest-request": "^2.0.1",
     "@esri/arcgis-rest-types": "^2.0.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WSDOT-GIS/arcgis-rest-gp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WSDOT-GIS/arcgis-rest-gp/issues"
+  },
+  "homepage": "https://github.com/WSDOT-GIS/arcgis-rest-gp#readme"
 }

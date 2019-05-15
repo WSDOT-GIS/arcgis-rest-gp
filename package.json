@@ -13,7 +13,6 @@
     "pack-list": "npm pack --dry-run"
   },
   "keywords": [],
-  "private": true,
   "author": "Jeff Jacobson",
   "license": "Unlicense",
   "devDependencies": {

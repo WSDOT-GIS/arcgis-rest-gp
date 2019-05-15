@@ -14,13 +14,13 @@ npm install @wsdot/arcgis-rest-gp
 
 ### ES6 Modules / TypeScript
 
-```JavaScript
+```javascript
 import { execute } from "@wsdot/arcgis-rest-gp";
 ```
 
 ### Node
 
-```JavaScript
+```javascript
 const gp = require("@wsdot/arcgis-rest-gp");
 ```
 
@@ -35,11 +35,12 @@ require("isomorphic-form-data");
 
 ## Example
 
-```JavaScript
+```javascript
 import { execute } from "@wsdot/arcgis-rest-gp";
 
 (async () => {
   const response = await execute({
+    // URL and params properties will differ depending on your service.
     taskUrl: "https://example.com/ArcGIS/rest/services/MyFolder/MyGP/GPServer/GetBlockNumber",
     params: {
       ClickPointX: -13680704.57,

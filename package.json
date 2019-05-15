@@ -1,6 +1,6 @@
 {
   "name": "@wsdot/arcgis-rest-gp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "For use with [ArcGIS REST JS].",
   "main": "dist/index.js",
   "files": [
@@ -12,7 +12,7 @@
     "lint": "tslint -p . --fix && prettier test/test.js --write",
     "pack-list": "npm pack --dry-run"
   },
-  "keywords": [],
+  "keywords": ["arcgis", "rest", "geoprocessing"],
   "author": "Jeff Jacobson",
   "license": "Unlicense",
   "devDependencies": {

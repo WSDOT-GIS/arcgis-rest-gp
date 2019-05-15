@@ -1,0 +1,32 @@
+{
+  "name": "@wsdot/arcgis-rest-gp",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "prepare": "tsc",
+    "test": "node test/test.js",
+    "lint": "tslint -p . --fix && prettier test/test.js --write",
+    "pack-list": "npm pack --dry-run"
+  },
+  "keywords": [],
+  "private": true,
+  "author": "Jeff Jacobson",
+  "license": "Unlicense",
+  "devDependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-form-data": "^2.0.0",
+    "prettier": "^1.17.1",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@esri/arcgis-rest-request": "^2.0.1",
+    "@esri/arcgis-rest-types": "^2.0.1"
+  }
+}

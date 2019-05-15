@@ -61,7 +61,7 @@ export interface IGPContext {
 
 export interface IGPExecuteOptions extends IRequestOptions {
   taskUrl: string;
-  params: IGPExecuteOptions;
+  params: IGPExecuteParameters;
 }
 
 export interface IGPExecuteParameters extends IParams {

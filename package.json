@@ -1,6 +1,6 @@
 {
   "name": "@wsdot/arcgis-rest-gp",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "For use with [ArcGIS REST JS].",
   "main": "dist/index.js",
   "files": [

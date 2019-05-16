@@ -1,17 +1,27 @@
 import { IParams, IRequestOptions } from "@esri/arcgis-rest-request";
 import { IExtent, ISpatialReference } from "@esri/arcgis-rest-types";
 
-export type esriExecutionType =
+export type GPExecutionType =
   | "esriExecutionTypeSynchronous"
   | "esriExecutionTypeAsynchronous";
 
-export type esriGPParameterDirection =
+export type GPParameterDirection =
   | "esriGPParameterDirectionInput"
   | "esriGPParameterDirectionOutput";
 
-export type esriGPParameterType =
+export type GPParameterType =
   | "esriGPParameterTypeRequired"
   | "esriGPParameterTypeOptional";
+
+export type GPJobStatus =
+  | "esriJobSubmitted"
+  | "esriJobWaiting"
+  | "esriJobExecuting"
+  | "esriJobSucceeded"
+  | "esriJobFailed"
+  | "esriJobTimedOut"
+  | "esriJobCancelling"
+  | "esriJobCancelled";
 
 export interface IGPServiceInfo {
   currentVersion: number;
@@ -20,7 +30,7 @@ export interface IGPServiceInfo {
    * List of services
    */
   tasks: string[];
-  executionType: esriExecutionType;
+  executionType: GPExecutionType;
   /**
    * Can be an empty string if not applicable
    */
@@ -36,9 +46,9 @@ export interface IGPParameter {
   dataType: string; // "<dataType1>";
   displayName: string;
   description?: string; // Added at 10.1 SP1
-  direction: esriGPParameterDirection;
+  direction: GPParameterDirection;
   defaultValue: any;
-  parameterType: esriGPParameterType;
+  parameterType: GPParameterType;
   category: string;
   choiceList: string[];
 }
@@ -49,7 +59,7 @@ export interface IGPTask {
   description?: string; // Added at 10.1 SP1
   category: string;
   helpUrl: string;
-  executionType: esriExecutionType;
+  executionType: GPExecutionType;
   parameters: IGPParameter[];
 }
 
@@ -87,6 +97,35 @@ export interface IGPExecuteParameters extends IParams {
   returnFeatureCollection?: boolean;
 }
 
+export interface IGPJobParams extends IParams {
+  // f: "html" | "json" | "kmz";
+  returnMessages: boolean;
+}
+
+export interface IGPJobOptions extends IRequestOptions {
+  taskUrl: string;
+  jobId: string;
+  params: IGPJobParams;
+}
+
+export interface IGPMessage {
+  type: string;
+  description: string;
+}
+
+export interface IGPBasicJobInfo {
+  /**
+   * Job ID string consisting of letters and digits.
+   */
+  jobId: string;
+  jobStatus: GPJobStatus;
+}
+
+export interface IGPJob extends IGPBasicJobInfo {
+  results: IGPResult[];
+  messages: IGPMessage[];
+}
+
 export interface IGPResult {
   paramName: string;
   dataType: string;
@@ -95,5 +134,5 @@ export interface IGPResult {
 
 export interface IGPResponse {
   results: IGPResult[];
-  messages: string[];
+  messages: IGPMessage[];
 }

@@ -40,14 +40,7 @@ assert.doesNotReject(async () => {
     `Expected one result. Got ${response.results.length}.`
   );
   /** @type: string[] */
-  const [
-    distance,
-    x,
-    y,
-    angle,
-    cityName,
-    cityCode
-  ] = response.results[0].value;
+  const [distance, x, y, angle, cityName, cityCode] = response.results[0].value;
   assert.strictEqual(distance, "2850.52891882");
   assert.strictEqual(x, "1027982.41005");
   assert.strictEqual(y, "607524.276162");
@@ -136,7 +129,6 @@ assert.doesNotReject(async () => {
   assert.strictEqual(message, "NO ERROR");
 });
 
-
 assert.doesNotReject(async () => {
   const response = await gp.execute({
     taskUrl: `${iltGetPointOnStreetGPServiceUrl}/GetPointOnStreet`,
@@ -149,11 +141,11 @@ assert.doesNotReject(async () => {
   });
   // Parse the result coordinates.
   const xy = response.results[0].value.map(parseFloat);
-  const expected = [-13680719.6404, 5947460.67748]
+  const expected = [-13680719.6404, 5947460.67748];
 
   xy.forEach((coord, i) => {
     assert.strictEqual(coord, expected[i]);
-  })
+  });
 });
 
 assert.doesNotReject(async () => {

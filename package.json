@@ -1,7 +1,7 @@
 {
   "name": "@wsdot/arcgis-rest-gp",
-  "version": "0.0.3",
-  "description": "For use with [ArcGIS REST JS].",
+  "version": "0.0.4",
+  "description": "Extends ArcGIS REST JS with geoprocessing capability",
   "main": "dist/index.js",
   "files": [
     "dist/**"

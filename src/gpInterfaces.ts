@@ -23,6 +23,11 @@ export type GPJobStatus =
   | "esriJobCancelling"
   | "esriJobCancelled";
 
+export type GPJobMessageType =
+  | "esriJobMessageTypeInformative"
+  | "esriJobMessageTypeWarning"
+  | "esriJobMessageTypeError";
+
 export interface IGPServiceInfo {
   currentVersion: number;
   serviceDescription: string;
@@ -109,7 +114,7 @@ export interface IGPJobOptions extends IRequestOptions {
 }
 
 export interface IGPMessage {
-  type: string;
+  type: GPJobMessageType;
   description: string;
 }
 

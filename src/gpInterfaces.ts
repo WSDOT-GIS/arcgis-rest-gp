@@ -1,32 +1,28 @@
-import { IParams, IRequestOptions } from "@esri/arcgis-rest-request";
-import { IExtent, ISpatialReference } from "@esri/arcgis-rest-types";
+import type {
+  IParams,
+  IRequestOptions,
+  ISpatialReference,
+  IExtent,
+} from "@esri/arcgis-rest-request";
 
-export type GPExecutionType =
-  | "esriExecutionTypeSynchronous"
-  | "esriExecutionTypeAsynchronous";
+// cspell:disable-next-line
+export type GPExecutionType = `esriExecutionType${"As" | "S"}ynchronous`;
 
-export type GPParameterDirection =
-  | "esriGPParameterDirectionInput"
-  | "esriGPParameterDirectionOutput";
+export type GPParameterDirection = `esriGPParameterDirection${"In" | "Out"}put`;
 
-export type GPParameterType =
-  | "esriGPParameterTypeRequired"
-  | "esriGPParameterTypeOptional";
+export type GPParameterType = `esriGPParameterType${"Required" | "Optional"}`;
 
-export type GPJobStatus =
-  | "esriJobSubmitted"
-  | "esriJobWaiting"
-  | "esriJobExecuting"
-  | "esriJobSucceeded"
-  | "esriJobFailed"
-  | "esriJobTimedOut"
-  | "esriJobCancelling"
-  | "esriJobCancelled";
+export type GPJobStatus = `esriJob${
+  | "Submitted"
+  | "Waiting"
+  | "Executing"
+  | "Succeeded"
+  | "Failed"
+  | "TimedOut"
+  | "Cancelling"
+  | "Cancelled"}`;
 
-export type GPJobMessageType =
-  | "esriJobMessageTypeInformative"
-  | "esriJobMessageTypeWarning"
-  | "esriJobMessageTypeError";
+export type GPJobMessageType = `esriJobMessageType${"Informative" | "Warning" | "Error"}`;
 
 export interface IGPServiceInfo {
   currentVersion: number;

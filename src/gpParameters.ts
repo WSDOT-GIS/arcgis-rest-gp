@@ -3,15 +3,15 @@
  * @see https://developers.arcgis.com/rest/services-reference/submit-gp-job.htm
  */
 
-import {
+import type {
   GeometryType,
   IField,
   IGeometry,
   IHasZM,
-  ISpatialReference
-} from "@esri/arcgis-rest-types";
+  ISpatialReference,
+} from "@esri/arcgis-rest-request";
 
-export type GPParameterType =
+export type GPParameterTypeSingle =
   | "GPBoolean"
   | "GPDouble"
   | "GPLong"
@@ -23,42 +23,34 @@ export type GPParameterType =
   | "GPDataFile"
   | "GPRasterData"
   | "GPRasterDataLayer"
-  | "Field"
-  | "GPMultiValue:GPBoolean"
-  | "GPMultiValue:GPDouble"
-  | "GPMultiValue:GPLong"
-  | "GPMultiValue:GPString"
-  | "GPMultiValue:GPLinearUnit"
-  | "GPMultiValue:GPFeatureRecordSetLayer"
-  | "GPMultiValue:GPRecordSetLayer"
-  | "GPMultiValue:GPDate"
-  | "GPMultiValue:GPDataFile"
-  | "GPMultiValue:GPRasterData"
-  | "GPMultiValue:GPRasterDataLayer"
-  | "GPMultiValue:Field";
+  | "Field";
+
+export type GPParameterType =
+  | GPParameterTypeSingle
+  | `GPMultiValue:${GPParameterTypeSingle}`;
 
 export interface IGPLinearUnit {
   distance: number;
   units: string; // TODO: create units type
 }
 
-export interface IFeature {
-  attributes: {
-    [key: string]: any;
-  };
+export type Attributes = Record<string, unknown>;
+
+export interface IFeature<A extends Attributes> {
+  attributes: A
 }
 
-export interface IGeoFeature extends IFeature {
+export interface IGeoFeature<A extends Attributes> extends IFeature<A> {
   geometry: IGeometry;
 }
 
-export interface IGPRecordSetLayer {
+export interface IGPRecordSetLayer<A extends Attributes> {
   fields: IField[];
-  features: IFeature[];
+  features: IFeature<A>[];
 }
 
-export interface IGPFeatureRecordSetLayer extends IGPRecordSetLayer, IHasZM {
+export interface IGPFeatureRecordSetLayer<A extends Attributes> extends IGPRecordSetLayer<A>, IHasZM {
   geometryType: GeometryType;
   spatialReference: ISpatialReference;
-  features: IGeoFeature[];
+  features: IGeoFeature<A>[];
 }

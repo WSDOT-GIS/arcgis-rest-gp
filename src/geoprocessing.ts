@@ -1,5 +1,5 @@
 import { IRequestOptions, request } from "@esri/arcgis-rest-request";
-import {
+import type {
   GPJobStatus,
   IGPBasicJobInfo,
   IGPExecuteOptions,
@@ -9,12 +9,12 @@ import {
   IGPResponse,
   IGPResult,
   IGPServiceInfo,
-  IGPTask
+  IGPTask,
 } from "./gpInterfaces";
 import URLFormatError from "./URLFormatError";
 
 const gpServiceUrlRe = /GPServer\/?$/i;
-const gpTaskUrlRe = /GPServer\/([^\/]+)\/?$/i;
+const gpTaskUrlRe = /GPServer\/([^/]+)\/?$/i;
 
 function testUrlFormat(url: string, re: RegExp) {
   if (!re.test) {
@@ -59,18 +59,16 @@ export async function execute(
 ): Promise<IGPResponse> {
   const { taskUrl, params } = options;
   return await request(`${taskUrl}/execute`, {
-    params
+    params,
   });
 }
 
 export class GPJob implements IGPJob {
-  // tslint:disable: variable-name
   private _jobOptions: IGPJobOptions;
   private _jobId: string;
   private _jobStatus: GPJobStatus;
   private _results: IGPResult[];
   private _messages: IGPMessage[];
-  // tslint:enable: variable-name
 
   public get jobId(): string {
     return this._jobId;
@@ -143,8 +141,8 @@ export async function submitJob(options: IGPExecuteOptions) {
     jobId: jobInfo.jobId,
     taskUrl: options.taskUrl,
     params: {
-      returnMessages: true
-    }
+      returnMessages: true,
+    },
   };
   return new GPJob(jobInfo, jobOptions);
 }

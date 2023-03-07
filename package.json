@@ -1,32 +1,35 @@
 {
   "name": "@wsdot/arcgis-rest-gp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Extends ArcGIS REST JS with geoprocessing capability",
-  "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
   "files": [
-    "dist/**"
+    "./dist/**"
   ],
   "scripts": {
     "prepare": "tsc",
     "test": "node test/test.js",
-    "lint": "tslint -p . --fix && prettier test/test.js --write",
+    "lint": "eslint . --fix && prettier . --write",
     "pack-list": "npm pack --dry-run"
   },
-  "keywords": ["arcgis", "rest", "geoprocessing"],
+  "keywords": [
+    "arcgis",
+    "rest",
+    "geoprocessing"
+  ],
   "author": "Jeff Jacobson",
   "license": "Unlicense",
   "devDependencies": {
-    "isomorphic-fetch": "^2.2.1",
-    "isomorphic-form-data": "^2.0.0",
-    "prettier": "^1.17.1",
-    "tslint": "^5.16.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.4.5"
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "eslint-config-prettier": "^8.7.0",
+    "prettier": "^2.8.4",
+    "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@esri/arcgis-rest-request": "^2.0.1",
-    "@esri/arcgis-rest-types": "^2.0.1"
+    "@esri/arcgis-rest-request": "^4.1.2"
   },
   "directories": {
     "test": "test"
